@@ -69,10 +69,6 @@ results_df = load_results()
 if results_df.empty:
     st.info("No submissions yet.")
 else:
-    leaderboard = results_df.sort_values("RMSE", ascending=True).reset_index(drop=True)
-    leaderboard.index += 1
-    st.dataframe(leaderboard, use_container_width=True)
-
     with open(RESULTS_PATH, "rb") as f:
         st.download_button(
             "Download submissions.xlsx",
