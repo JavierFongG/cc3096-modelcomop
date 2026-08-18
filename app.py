@@ -65,8 +65,7 @@ if st.button("Submit", disabled=submit_disabled):
         st.error(f"Failed to process submission: {e}")
 
 st.subheader("Leaderboard")
-results_df = load_results()
-if results_df.empty:
+if not os.path.exists(RESULTS_PATH):
     st.info("No submissions yet.")
 else:
     with open(RESULTS_PATH, "rb") as f:
